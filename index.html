@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>無定型 FORMLESS - 畢業製作展覽</title>
+  <title>無定形 FORMLESS - 畢業製作展覽</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +11,7 @@
   <div class="cursor-glow"></div>
   <nav class="navbar">
     <div class="container">
-      <h1 class="nav-title">無定型 FORMLESS</h1>
+      <h1 class="nav-title">無定形 FORMLESS</h1>
       <ul class="nav-links">
         <li><a href="index.html">首頁</a></li>
         <li><a href="about.html">關於我們</a></li>
@@ -27,42 +27,64 @@
   <main class="container">
     <section id="home" class="hero">
       <p class="eyebrow">第19屆靜宜大學大衆傳播學系畢業製作</p>
-      <h1 class="hero-heading" data-text="無定型 FORMLESS">無定型 FORMLESS</h1>
+   <h1 class="hero-heading">
+    
+    <!-- 中文 無定形 -->
+    <span class="zh-text">
+        <span style="--i:1">無</span>
+        <span style="--i:2">定</span>
+        <span style="--i:3">形</span>
+    </span>
+    <!-- 英文 FORMLESS -->
+    <span class="eng-text">
+        <span style="--i:1">F</span>
+        <span style="--i:2">O</span>
+        <span style="--i:3">R</span>
+        <span style="--i:4">M</span>
+        <span style="--i:5">L</span>
+        <span style="--i:6">E</span>
+        <span style="--i:7">S</span>
+        <span style="--i:8">S</span>
+    </span>
+
+</h1>
+
+</h1>
       <p class="subtitle">未被定義，在流動中變化成形。</p>
-      <div class="buttons">
-<a href="#works" class="btn" style="display: inline-block; text-decoration: none; background: rgba(230, 168, 110, 0.75) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; color: white !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; padding: 10px 0 !important; width: 150px !important; text-align: center !important; border-radius: 50px !important; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.3) !important; cursor: pointer !important; font-weight: bold; margin-right: 15px; transition: 0.3s; font-size: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">查看作品</a>
-<a href="#team" class="btn" style="display: inline-block; text-decoration: none; background: rgba(255, 255, 255, 0.2) !important; backdrop-filter: blur(10px) !important; -webkit-backdrop-filter: blur(10px) !important; border: 1px solid rgba(51, 51, 51, 0.2) !important; color: #333333 !important; padding: 10px 0 !important; width: 150px !important; text-align: center !important; border-radius: 50px !important; cursor: pointer !important; font-weight: bold; transition: 0.3s; font-size: 15px;">認識團隊</a>    </section>
+   <div class="buttons" style="display: flex; gap: 16px; align-items: center;">
+<a href="#works" class="btn" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; background: linear-gradient(135deg, rgba(68, 52, 42, 0.85) 0%, rgba(45, 34, 27, 0.95) 100%); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); color: #F8F2EC; border: 1.5px solid rgba(255, 220, 190, 0.4); border-radius: 30px; padding: 12px 32px; box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5), inset 0 -3px 4px rgba(0, 0, 0, 0.6), 0 12px 30px rgba(15, 8, 5, 0.5); font-weight: 500; letter-spacing: 0.05em;">查看作品</a>    <a href="#team" class="btn" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; background: rgba(255, 255, 255, 0.22); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #2B231D; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 30px; padding: 12px 32px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.4); font-weight: 500; letter-spacing: 0.05em;">認識團隊</a>
+</div>
 
-    <!-- 倒計時面板 -->
-    <section class="countdown-panel">
-      <div class="countdown-container">
-        <h2>畢業展覽倒計時</h2>
-        <div class="countdown-timer" id="countdown">
-          <div class="time-unit">
-            <span class="time-value" id="days">00</span>
-            <span class="time-label">天</span>
-          </div>
-          <div class="time-unit">
-            <span class="time-value" id="hours">00</span>
-            <span class="time-label">時</span>
-          </div>
-          <div class="time-unit">
-            <span class="time-value" id="minutes">00</span>
-            <span class="time-label">分</span>
-          </div>
-          <div class="time-unit">
-            <span class="time-value" id="seconds">00</span>
-            <span class="time-label">秒</span>
-          </div>
+<!-- 倒計時面板 -->
+    <section class="countdown-panel" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 20px; padding: 24px 36px; width: 100%; max-width: 580px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); text-align: center;">
+        <div class="countdown container">
+            <h2 style="color: #3A2C23; margin: 0 0 16px 0; font-size: 19px; font-weight: 600; letter-spacing: 0.05em;">畢業展覽倒計時</h2>
+            <div class="countdown-timer" id="countdown" style="display: flex; gap: 14px; justify-content: center; align-items: center;">
+                <div class="time-unit" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 18px; min-width: 64px; text-align: center;">
+                    <span class="time-value" id="days" style="color: #2B231D; font-weight: bold; font-size: 24px; display: block; line-height: 1.2;">00</span>
+                    <span class="time-label" style="color: #4A3D35; font-size: 13px; display: block; margin-top: 4px;">天</span>
+                </div>
+                <div class="time-unit" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 18px; min-width: 64px; text-align: center;">
+                    <span class="time-value" id="hours" style="color: #2B231D; font-weight: bold; font-size: 24px; display: block; line-height: 1.2;">00</span>
+                    <span class="time-label" style="color: #4A3D35; font-size: 13px; display: block; margin-top: 4px;">時</span>
+                </div>
+                <div class="time-unit" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 18px; min-width: 64px; text-align: center;">
+                    <span class="time-value" id="minutes" style="color: #2B231D; font-weight: bold; font-size: 24px; display: block; line-height: 1.2;">00</span>
+                    <span class="time-label" style="color: #4A3D35; font-size: 13px; display: block; margin-top: 4px;">分</span>
+                </div>
+                <div class="time-unit" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 18px; min-width: 64px; text-align: center;">
+                    <span class="time-value" id="seconds" style="color: #2B231D; font-weight: bold; font-size: 24px; display: block; line-height: 1.2;">00</span>
+                    <span class="time-label" style="color: #4A3D35; font-size: 13px; display: block; margin-top: 4px;">秒</span>
+                </div>
+            </div>
+            <p class="countdown-date" style="color: #4A3D35; margin: 14px 0 0 0; font-size: 13px;">2027年5月1日 開展</p>
         </div>
-        <p class="countdown-date">2027年5月1 日 開展</p>
-      </div>
     </section>
-
+                
     <section id="about" class="panel">
       <h2>主題簡介</h2>
       <p>這是 2026 大傳系全體同學的集體實驗。我們拒絕標籤與框架，在影像、新聞與多種媒介的碰撞下，不斷翻轉並重建自我。</p>
-      <p>我們在流動中相遇，在變化中成形。歡迎來到我們的「無定型」世界。</p>
+      <p>我們在流動中相遇，在變化中成形。歡迎來到我們的「無定形」世界。</p>
       <p></p>
       <p></p>
       <p></p>
@@ -133,7 +155,7 @@
         <article class="news-item">
           <h4>作品展覽時間確認</h4>
           <p class="news-date">2026年05月10日</p>
-          <p>『無定型 FORMLESS』將於5月10日在希嘉1樓正式展出，歡迎各位前來參觀體驗。</p>
+          <p>『無定形 FORMLESS』將於5月10日在希嘉1樓正式展出，歡迎各位前來參觀體驗。</p>
         </article>
         <article class="news-item">
           <h4>互動功能更新</h4>

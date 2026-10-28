@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
   font-family: "Noto Sans TC", "Segoe UI", sans-serif;
-  background: #08040f;
-  color: #f5f2ff;
+  background: #DFD6C9;
+  color: #232120;
 }
 
 * {
@@ -1125,45 +1125,100 @@ body {
 
 /* 1. 底層色塊：調整模糊度，讓形狀變明顯 */
 body::before {
-    content: "";
+content: "";
     position: fixed;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
     z-index: -999;
-    
-    /* 調整漸層比例，讓顏色集中一點 */
-    background: radial-gradient(circle at 30% 40%, #f5eadd 0%, rgba(245, 234, 221, 0) 40%), /* 米色 */
-                radial-gradient(circle at 70% 60%, #e6a86e 0%, rgba(230, 168, 110, 0) 45%), /* 橘色 */
-                radial-gradient(circle at 40% 70%, #1a1a1a 0%, rgba(26, 26, 26, 0) 50%);    /* 黑色 */
-    
-    background-color: #fdfaf5; /* 參考圖片底部的極淺米色 */
-    filter: blur(40px); /* 降低模糊感，讓色塊形狀變明顯 */
+
+    /* 濃郁深沉的暗棕色基底光影 (徹底壓暗，絕不發白發淺) */
+    background: 
+        radial-gradient(ellipse 60% 70% at 50% 45%, rgba(246, 245, 245, 0.45) 0%, transparent 65%),
+        linear-gradient(135deg, #706153 0%, #635446 50%, #524437 100%);
+
+    background-color: #635446 !important; /* 沉穩濃郁的高級暗棕底色 */
+    filter: blur(20px);
     animation: smokeFlow 20s ease-in-out infinite;
 }
 
 /* 2. 線條層：模擬圖片中的細曲線 */
 body::after {
-    content: "";
+   content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
     z-index: -998;
-    
-    /* 這裡繪製了兩條明顯的動態曲線 (深墨色與暖橘) */
+    pointer-events: none;
+
+    /* 大光圈焦外羽化景深 */
     background-image: 
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"><path d="M0,200 C300,50 600,350 1200,200" stroke="%23333333" stroke-width="1.2" fill="none" opacity="0.7"/></svg>'),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"><path d="M0,150 C400,300 800,0 1200,150" stroke="%23e6a86e" stroke-width="1.2" fill="none" opacity="0.6"/></svg>');
-    
-    background-repeat: repeat-x;
-    background-size: 100% 60%;
-    background-position: center;
-    animation: lineWave 15s linear infinite;
+        /* 1. 右下角：深沉濃郁的焦外黑棕葉影 */
+        radial-gradient(ellipse 520px 420px at 98% 8%, rgba(18, 10, 6, 0.95) 0%, rgba(35, 18, 10, 0.75) 45%, transparent 75%),
+        radial-gradient(ellipse 380px 320px at 85% 22%, rgba(28, 14, 8, 0.85) 0%, transparent 70%),
+        
+        /* 2. 左下角：溫暖優雅的焦外暖橘棕落葉景深 */
+        radial-gradient(ellipse 420px 300px at 2% 88%, rgba(160, 90, 42, 0.85) 0%, rgba(120, 60, 25, 0.6) 50%, transparent 75%),
+        radial-gradient(ellipse 280px 240px at 12% 95%, rgba(180, 105, 48, 0.75) 0%, transparent 70%),
+
+        
+
+        /* 3. 右上角：微弱的枝葉焦外暗角影 */
+        radial-gradient(ellipse 320px 220px at 95% 5%, rgba(45, 25, 15, 0.65) 0%, transparent 70%);
+      
+        
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: blur(28px);
+
+    /* 直接對 background-position 播放慢速小範圍浮動 */
+    animation: flameFlicker 4s ease-in-out infinite;
 }
 
+/* 直接改變背景定位座標，徹底突破 GPU 凍結問題 */
+@keyframes bgFloatMove {
+   0%   { opacity: 1; }
+    20%  { opacity: 0.85; }
+    35%  { opacity: 1; }
+    55%  { opacity: 0.9; }
+    75%  { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* 輕微晃動與呼吸感，小範圍飄移約 15px */
+@keyframes forceSway {
+    0% {
+        opacity: 0.92;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    50% {
+        opacity: 1;
+        margin-top: -12px;
+        margin-left: -10px;
+    }
+    100% {
+        opacity: 0.88;
+        margin-top: -6px;
+        margin-left: 12px;
+    }
+}
+
+/* 小範圍微風晃動與呼吸感 Keyframes */
+@keyframes subtleBokehSway {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-12px, -8px) scale(1.02); /* 微幅向左上漂移 12px、微放 1.02 倍 */
+    }
+    100% {
+        transform: translate(10px, -15px) scale(0.99); /* 微幅向右上漂移 10px */
+    }
+}
 /* --- 動畫設定 --- */
 
 @keyframes smokeFlow {
@@ -1271,3 +1326,154 @@ video {
   95% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* =========================================
+   「無定形 FORMLESS」古典典雅字體與上下排版
+   ========================================= */
+
+/* 引入 Google 高級襯線字體 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Noto+Serif+TC:wght@600;700&display=swap');
+
+.hero-heading {
+    display: flex !important;
+    flex-direction: column !important; /* 強制上下分行 */
+    align-items: flex-start !important; /* 靠左對齊 */
+    gap: 12px !important;               /* 英文與中文之間的間距 */
+    margin: 20px 0 25px 0 !important;
+}
+
+/* 移除原本可能有的偽元素文字疊影效果 */
+.hero-heading::before,
+.hero-heading::after {
+    display: none !important;
+}
+
+/* 上層英文：FORMLESS */
+.hero-heading .eng-text {
+    font-family: 'Cinzel', 'Times New Roman', serif !important;
+    font-size: 3.0rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.30em !important; /* 寬字距高級感 */
+    color: #2B231D !important;
+    line-height: 1.1 !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 下層中文：無定形 */
+.hero-heading .zh-text {
+    font-family: 'Noto Serif TC', 'Source Han Serif TC', 'PMingLiU', serif !important;
+    font-size: 5.0rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.20em !important; /* 中文字距拉開 */
+    color: #221B16 !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
+}
+/* =========================================
+   「無定型 FARMLESS」選項一：位置固定 + 溫暖流光掃過 (Shimmer Sweep)
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Noto+Serif+TC:wght@600;700&display=swap');
+
+.hero-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin: 20px 0 25px 0 !important;
+}
+
+.hero-heading .eng-text,
+.hero-heading .zh-text {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 基礎字體樣式與漸層背景設置 */
+.hero-heading .eng-text span,
+.hero-heading .zh-text span {
+    display: inline-block;
+    position: relative;
+    
+    /* 利用背景漸層與 background-clip 打造流光 */
+    background: linear-gradient(
+        110deg,
+        #2A211B 0%,
+        #2A211B 40%,
+        #E3D0B5 50%,
+        #2A211B 60%,
+        #2A211B 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* 1.4秒入場，入場完後開啟流光掃過 */
+    animation: 
+        shimmerIn 1.2s ease-out forwards,
+        shimmerSweep 6s ease-in-out infinite;
+}
+
+/* 英文獨立設定 */
+.hero-heading .eng-text span {
+    font-family: 'Cinzel', 'Times New Roman', serif !important;
+    font-size: 3.2rem !important;
+    font-weight: 500 !important;
+    margin-right: 0.38em;
+    animation-delay: calc(var(--i) * 0.08s), calc(1.2s + (var(--i) * 0.15s));
+}
+
+/* 中文獨立設定 */
+.hero-heading .zh-text span {
+    font-family: 'Noto Serif TC', 'Source Han Serif TC', serif !important;
+    font-size: 4.2rem !important;
+    font-weight: 700 !important;
+    margin-right: 0.28em;
+    animation-delay: calc(0.4s + (var(--i) * 0.12s)), calc(1.6s + (var(--i) * 0.25s));
+}
+
+/* 入場：漸變顯現（位置保持原位） */
+@keyframes shimmerIn {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        background-position: 100% 0;
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        background-position: 100% 0;
+    }
+}
+
+/* 持續流光：漸層背景橫向移動，文字位置完全不動 */
+@keyframes shimmerSweep {
+    0% {
+        background-position: 100% 0;
+    }
+    50% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+/* =========================================
+   主按鈕（查看作品）改為高級暗棕色
+   ========================================= */
+.buttons a[href="#works"],
+.hero .btn:first-child {
+    background: #3A2C23 !important; /* 典雅暗棕色 */
+    color: #F0E6DF !important;      /* 柔和米白字體 */
+    border: 1px solid rgba(180, 150, 120, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(35, 25, 20, 0.25) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 滑鼠懸停效果 */
+.buttons a[href="#works"]:hover,
+.hero .btn:first-child:hover {
+    background: #4A382D !important; /* 微亮微暖棕色 */
+    box-shadow: 0 6px 20px rgba(35, 25, 20, 0.35) !important;
+}
+
